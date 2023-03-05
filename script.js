@@ -1,37 +1,15 @@
 
-const openModalButtons = document.querySelectorAll('[myModal]')
-const closeModalButtons = document.querySelectorAll('[myBtn]')
-const overlay = document.getElementById('overlay')
+const menuIcon = document.querySelector('.menu-icon');
+const nav = document.querySelector('nav');
 
-openModalButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const modal = document.querySelector(button.dataset.modalTarget)
-    openModal(modal)
-  })
-})
+menuIcon.addEventListener('click', function() {
+  nav.classList.toggle('active');
+});
 
-overlay.addEventListener('click', () => {
-  const modals = document.querySelectorAll('.modal.active')
-  modals.forEach(modal => {
-    closeModal(modal)
-  })
-})
 
-closeModalButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const modal = button.closest('.modal')
-    closeModal(modal)
-  })
-})
-function openModal(modal) {
-  if (modal == null) return
-  modal.classList.add('active')
-  overlay.classList.add('active')
-}
-
-function closeModal(modal) {
-  if (modal == null) return
-  modal.classList.remove('active')
-  overlay.classList.remove('active')
-}
-
+$(document).ready(function(){
+    $('.menu-icon').click(function(){
+      $('nav ul').toggleClass('showing');
+    });
+  });
+  
